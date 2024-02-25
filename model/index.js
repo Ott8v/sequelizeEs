@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import dotenv from 'dotenv';
 dotenv.config()
 
@@ -10,8 +10,15 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, pr
     dialect: 'mysql'
 });
 
-try {
-    await sequelize.authenticate();
-} catch (e) {
-    console.error(e);
-}
+const Patient = sequelize.define('Patient', {
+    firstName:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    lastName:{
+        type: DataTypes.STRING,
+        allowNull: false
+    }
+});
+
+// await Patient.sync({ alter: true });
