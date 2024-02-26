@@ -1,5 +1,4 @@
 const db = require('../models');
-console.log(db);
 const Patient = db.patients;
 const Op = db.Sequelize.Op;
 
