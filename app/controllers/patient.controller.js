@@ -16,6 +16,7 @@ exports.create = async (req, res) =>{
 
     try{
         await Patient.create(patient);
+        res.send('Patient created');
     }catch(err){
         res.status(500).send("An error occured while creating Patient");
     }
