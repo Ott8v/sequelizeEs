@@ -12,6 +12,11 @@ exports.create = async (req, res) =>{
     const patient = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        cf: req.body.cf,
+        blood: req.body.blood,
+        sex: req.body.sex,
+        nationality: req.body.nationality,
+        email: req.body.email
     };
 
     try{
