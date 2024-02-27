@@ -2,7 +2,7 @@ const db = require('../models');
 const Patient = db.patients;
 const Op = db.Sequelize.Op;
 
-exports.create = async (req, res) =>{
+exports.create = async(req, res) =>{
     if(!req.body){
         res.status(400).send("Can't be empty");
         console.log("Hello")
@@ -25,5 +25,15 @@ exports.create = async (req, res) =>{
     }catch(err){
         res.status(500).send("An error occured while creating Patient");
     }
-    
 }
+
+exports.findAll = async(req, res) =>{
+    try{
+        let allPat = await Patient.findAll();
+        res.send(JSON.stringify(allPat, null, 4));
+    }catch(err){
+        res.status(500).send("An error occured while searching Patient");
+    }
+   
+}
+    
