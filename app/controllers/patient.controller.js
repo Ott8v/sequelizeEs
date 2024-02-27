@@ -32,8 +32,17 @@ exports.findAll = async(req, res) =>{
         let allPat = await Patient.findAll();
         res.send(JSON.stringify(allPat, null, 4));
     }catch(err){
-        res.status(500).send("An error occured while searching Patient");
+        res.status(500).send("An error occured while searching Patients");
     }
    
+}
+
+exports.findPatient = async(req, res) => {
+    try {
+        let pat = await Patient.findByPk(req.param.id);
+        res.send(pat);
+    } catch (err) {
+        res.status(500).send("An error occured while searching Patient");
+    }
 }
     
