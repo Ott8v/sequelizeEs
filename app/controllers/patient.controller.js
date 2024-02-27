@@ -45,4 +45,14 @@ exports.findPatient = async(req, res) => {
         res.status(500).send("An error occured while searching Patient");
     }
 }
+
+exports.delete = async(req, res) =>{
+    try {
+        let pat = await Patient.findByPk(req.param.id);
+        pat.destroy();
+        res.send('Deleted completed');
+    } catch (err) {
+        res.status(500).send("An error occured while deleting Patient");
+    }
+}
     
